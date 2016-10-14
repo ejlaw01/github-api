@@ -7,10 +7,12 @@ var apiKey = require("./../.env").apiKey;
 // var Request = function(){
 // }
 
-var User = function(name, location){
+var User = function(name, location, numberOfRepos){
   this.name = name;
   this.location = location;
-}
+  this.numberOfRepos = numberOfRepos;
+  this.repos = [];
+};
 
 var user;
 
@@ -19,26 +21,28 @@ User.prototype.getRepos = function(){
     console.log(response);
     var name = response.name;
     var location = response.location;
-    user = new User(name, location);
+    var numberOfRepos = response.public_repos;
+    user = new User(name, location, numberOfRepos);
     console.log(user);
-    user.displayInfo();
     user.repoNames();
+    user.displayInfo();
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
 };
 
 User.prototype.repoNames = function(){
+  debugger;
   $.get('https://api.github.com/users/' + username + '/repos').then(function(repos){
-    var numberOfRepos = parseInt(repos.length);
-    console.log(repos);
+    var numberOfRepos = user.numberOfRepos;
     for (var i = 0; i < numberOfRepos; i++){
-      console.log(repos[i].name);
+      console.log(repos[i].name + " " + repos[i].description);
+      user.repos.push(repos[i].name + ": " + repos[i].description);
     }
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
-}
+};
 
 // User.prototype.getRepos = function(){
 //   $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
@@ -63,10 +67,12 @@ var apiKey = require("./../.env").apiKey;
 // var Request = function(){
 // }
 
-var User = function(name, location){
+var User = function(name, location, numberOfRepos){
   this.name = name;
   this.location = location;
-}
+  this.numberOfRepos = numberOfRepos;
+  this.repos = [];
+};
 
 var user;
 
@@ -75,26 +81,28 @@ User.prototype.getRepos = function(){
     console.log(response);
     var name = response.name;
     var location = response.location;
-    user = new User(name, location);
+    var numberOfRepos = response.public_repos;
+    user = new User(name, location, numberOfRepos);
     console.log(user);
-    user.displayInfo();
     user.repoNames();
+    user.displayInfo();
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
 };
 
 User.prototype.repoNames = function(){
+  debugger;
   $.get('https://api.github.com/users/' + username + '/repos').then(function(repos){
-    var numberOfRepos = parseInt(repos.length);
-    console.log(repos);
+    var numberOfRepos = user.numberOfRepos;
     for (var i = 0; i < numberOfRepos; i++){
-      console.log(repos[i].name);
+      console.log(repos[i].name + " " + repos[i].description);
+      user.repos.push(repos[i].name + ": " + repos[i].description);
     }
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
-}
+};
 
 // User.prototype.getRepos = function(){
 //   $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
@@ -121,7 +129,11 @@ var username;
 User.prototype.displayInfo = function(){
   $("#user").text(this.name);
   $("#location").text(this.location);
-}
+  debugger;
+  for (var i = 0; i < this.repos.length; i++) {
+    $("#repositories").append("<li>" + this.repos[i] + "</li>");
+  }
+};
 
 $(document).ready(function(){
   $("#search").submit(function(event){
