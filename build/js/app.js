@@ -2,14 +2,13 @@
 exports.apiKey = "5d2301e6e5affae37af1a943a0e0f1d1a150bc70";
 
 },{}],2:[function(require,module,exports){
-var apiKey = require("./../.env");
-// var username = require("./../js.frontend-interface.js");
+var apiKey = require("./../.env").apiKey;
 
 var User = function(){
 }
 
 User.prototype.getRepos = function(){
-  $.get('https://api.github.com/users/' + username + '?access_token=5d2301e6e5affae37af1a943a0e0f1d1a150bc70').then(function(response){
+  $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
     console.log(response);
   }).fail(function(error){
     console.log(error.responseJSON.message);
@@ -19,14 +18,13 @@ User.prototype.getRepos = function(){
 exports.userModule = User;
 
 },{"./../.env":1}],3:[function(require,module,exports){
-var apiKey = require("./../.env");
-// var username = require("./../js.frontend-interface.js");
+var apiKey = require("./../.env").apiKey;
 
 var User = function(){
 }
 
 User.prototype.getRepos = function(){
-  $.get('https://api.github.com/users/' + username + '?access_token=5d2301e6e5affae37af1a943a0e0f1d1a150bc70').then(function(response){
+  $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
     console.log(response);
   }).fail(function(error){
     console.log(error.responseJSON.message);
