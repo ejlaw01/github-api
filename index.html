@@ -2,16 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
     <title>GitHub API</title>
   </head>
   <body>
-    <h1>Git Friends :)</h1>
-    <hr>
-    <h4>Enter the username of the GitHub user you want to search for:</h4>
-    <form class="form-group">
-      <label for="search">Username:</label>
-      <input type="text" class="form-control" id="username">
-      <button type="submit" class="btn-lg btn-success">Go</button>
-    </form>
+    <div class="container">
+      <h1>Git Friends :)</h1>
+      <hr>
+      <h4>Enter the username of the GitHub user you want to search for.</h4>
+      <form class="form-group">
+        <br>
+        <label for="search">Username:</label>
+        <input type="text" class="form-control" id="username">
+        <br>
+        <button type="submit" class="btn btn-lg btn-success">Go</button>
+      </form>
+    </div>
   </body>
 </html>
