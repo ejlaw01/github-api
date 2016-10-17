@@ -5,9 +5,6 @@ var username;
 User.prototype.displayInfo = function(){
   $("#user").text(this.name);
   $("#location").text(this.location);
-  // for (var i = 0; i < this.repos.length; i++) {
-  //   $("#repositories").append("<li>" + this.repos[i] + "</li>");
-  // }
 };
 
 $(document).ready(function(){

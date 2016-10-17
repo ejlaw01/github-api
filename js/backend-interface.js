@@ -28,7 +28,11 @@ User.prototype.repoNames = function(){
     for (var i = 0; i < repos.length; i++){
       console.log(repos[i].name + " " + repos[i].description);
       user.repos.push(repos[i].name + ": " + repos[i].description);
-      $("#repositories").append("<li>" + repos[i].name + "</li>");
+      if (repos[i].description === null) {
+        $("#repositories").append("<li>" + repos[i].name + "</li>");
+      } else {
+        $("#repositories").append("<li>" + repos[i].name + ": " + repos[i].description + "</li>");
+      }
     }
   });
 };

@@ -32,7 +32,11 @@ User.prototype.repoNames = function(){
     for (var i = 0; i < repos.length; i++){
       console.log(repos[i].name + " " + repos[i].description);
       user.repos.push(repos[i].name + ": " + repos[i].description);
-      $("#repositories").append("<li>" + repos[i].name + "</li>");
+      if (repos[i].description === null) {
+        $("#repositories").append("<li>" + repos[i].name + "</li>");
+      } else {
+        $("#repositories").append("<li>" + repos[i].name + ": " + repos[i].description + "</li>");
+      }
     }
   });
 };
@@ -70,7 +74,11 @@ User.prototype.repoNames = function(){
     for (var i = 0; i < repos.length; i++){
       console.log(repos[i].name + " " + repos[i].description);
       user.repos.push(repos[i].name + ": " + repos[i].description);
-      $("#repositories").append("<li>" + repos[i].name + "</li>");
+      if (repos[i].description === null) {
+        $("#repositories").append("<li>" + repos[i].name + "</li>");
+      } else {
+        $("#repositories").append("<li>" + repos[i].name + ": " + repos[i].description + "</li>");
+      }
     }
   });
 };
@@ -84,9 +92,6 @@ var username;
 User.prototype.displayInfo = function(){
   $("#user").text(this.name);
   $("#location").text(this.location);
-  // for (var i = 0; i < this.repos.length; i++) {
-  //   $("#repositories").append("<li>" + this.repos[i] + "</li>");
-  // }
 };
 
 $(document).ready(function(){
