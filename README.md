@@ -10,6 +10,14 @@ _This webpage uses an API to collect user data from GitHub and display it in a w
 
 _Check out the site [Here!] (https://ejlaw01.github.io/github-api)_
 
+## Setup instructions
+
+_1. Clone repository from github._
+_2. Install packages with `$ npm install` and `$ bower install`._
+_3. Get an API key from github and create a .env file in which to store it._
+_4. Run program with `$ gulp serve` command._
+
+
 ## Known Bugs
 
 _N/A_
