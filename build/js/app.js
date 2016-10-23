@@ -17,7 +17,8 @@ User.prototype.getRepos = function(){
     console.log(response);
     var name = response.name;
     var location = response.location;
-    user = new User(name, location);
+    var repos = [];
+    user = new User(name, location, repos);
     console.log(user);
     user.repoNames();
     user.displayInfo();
@@ -28,7 +29,6 @@ User.prototype.getRepos = function(){
 
 User.prototype.repoNames = function(){
   $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(repos){
-    debugger;
     for (var i = 0; i < repos.length; i++){
       console.log(repos[i].name + " " + repos[i].description);
       user.repos.push(repos[i].name + ": " + repos[i].description);
@@ -59,7 +59,8 @@ User.prototype.getRepos = function(){
     console.log(response);
     var name = response.name;
     var location = response.location;
-    user = new User(name, location);
+    var repos = [];
+    user = new User(name, location, repos);
     console.log(user);
     user.repoNames();
     user.displayInfo();
@@ -70,7 +71,6 @@ User.prototype.getRepos = function(){
 
 User.prototype.repoNames = function(){
   $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(repos){
-    debugger;
     for (var i = 0; i < repos.length; i++){
       console.log(repos[i].name + " " + repos[i].description);
       user.repos.push(repos[i].name + ": " + repos[i].description);
@@ -97,6 +97,7 @@ User.prototype.displayInfo = function(){
 $(document).ready(function(){
   $("#search").submit(function(event){
     event.preventDefault();
+    $("#repositories").empty();
     username = $("#username").val();
     console.log("Input: " + username);
     var user = new User();

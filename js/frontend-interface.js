@@ -10,6 +10,7 @@ User.prototype.displayInfo = function(){
 $(document).ready(function(){
   $("#search").submit(function(event){
     event.preventDefault();
+    $("#repositories").empty();
     username = $("#username").val();
     console.log("Input: " + username);
     var user = new User();
